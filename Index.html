@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Carlton Lobo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+</head>
+
+<style>
+    /* CSS Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    @font-face {
+        font-family: 'Hubot Sans';
+        src: url('HubotSans-VariableFont_wdth,wght.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    body, .main-body {
+        font-family: 'Hubot Sans', Arial, sans-serif;
+    }
+
+    .header-bar {
+        width: 100%;
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        background-color: black;
+        color: white;
+        font-size: 2.8vh;
+        justify-content: space-between;
+        padding: 1% 3%;
+        z-index: 1;
+        top: 0;
+    }
+
+    .header-logo {
+        padding-left: 7%;
+    }
+
+    .header-dropdown {
+        display: flex;
+        flex-direction: row;
+        padding-right: 6%;
+        z-index: 3;
+        cursor: pointer;
+    }
+
+    .header-ProjectsDropDown {
+        padding-right: 30%;
+    }
+
+    .header-ContactDropDown {
+        padding-left: 30%;
+    }
+
+    .main-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 8% 10%;
+        background-color: grey;
+        gap: 2%;
+        height: 90vh;
+        align-items: center;
+        margin-top: 60px; /* To account for fixed header height */
+    }
+
+    .main-body {
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+    }
+
+    .main-header {
+        font-size: 7vh;
+    }
+
+    .main-text {
+        font-size: 2vh;
+    }
+
+    .main-footer {
+        display: flex;
+        gap: 10rem;
+        font-size: 1.8vh;
+        margin-top: 10px;
+    }
+
+    .main-image {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-image img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .footer-nav {
+        width: 100%;
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        padding: 1% 3%;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .footer-nav-prev, .footer-nav-next {
+        cursor: pointer;
+    }
+
+    .footer-nav-footer {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .footer-nav-footer-text {
+        display: flex;
+        white-space: nowrap;
+    }
+    .footer-nav-footer-contacts a {
+        color: white;
+        font-size: 1.2rem; /* Adjust the size of the icons */
+        text-decoration: none;
+    }
+
+    .footer-nav-footer-contacts {
+        display: flex;
+        gap: 0.5rem; /* Adds spacing between icons */
+        align-items: center;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .main-div {
+            flex-direction: column;
+            padding: 5% 5%;
+        }
+
+        .main-body, .main-image {
+            flex: unset;
+            width: 100%;
+        }
+
+        .header-bar {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-dropdown {
+            padding-right: 0;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+    }
+
+    
+    
+
+</style>
+
+
+<body>
+    <header>
+        <div class= "header-bar">
+            <div class="header-logo">
+                My Portfolio | Carlton Lobo
+            </div>
+            <div class="header-dropdown">
+                <div class="header-ProjectsDropDown">
+                    Projects
+                </div>
+                <div class="header-ContactDropDown">
+                    |||
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class = "main-div">
+        <div class="main-body">
+            <div class="main-header">
+                My Portfolio
+            </div>
+            <div class="main-text">
+                This website was made to showcase the projects I am workin on right now and the projects I have completed. The projects I work on usually follow a rule of being in a niche that I don't have a lot of experience in.
+            </div>
+            <div class="main-footer">
+                <div class="main-footer-date">
+                    Date: November '24
+                </div>
+                <div class="main-footer-genre">
+                    Genre: Web Dev
+                </div>
+            </div>
+        </div>
+        <div class="main-image">
+            <img src = "Lost In The Ether.png" alt = "An Image Of the Website" height="20%">
+        </div>
+    </div>
+    <footer class="footer-nav">
+        <div class="footer-nav-prev">
+            Previous Page
+        </div>
+        <div class="footer-nav-footer">
+            <div class="footer-nav-footer-text">
+                This Website was made by Carlton Lobo
+            </div>
+            <div class="footer-nav-footer-contacts">
+                My Links:&nbsp;
+                    <a href = "https://www.instagram.com/carlton.lobo/" class="fa fa-instagram"></a>&nbsp;
+                    <a href = "https://www.linkedin.com/in/carlton-lobo-a79537272/" class="fa fa-linkedin"></a>&nbsp;
+                    <a href="https://github.com/CarltonLobo" class="fa fa-github"></a>
+            </div>
+        </div>
+        <div class="footer-nav-next">
+            Next Page
+        </div>
+    </footer>
+</body>
+</html>
