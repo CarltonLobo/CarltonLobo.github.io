@@ -1,0 +1,65 @@
+{
+    "page-":{
+        "title":"",
+        "discription":"",
+        "date":"",
+        "genre":"",
+        "image":""
+    },
+    "page-1":{
+        "title":"My Portfolio",
+        "discription":"This website was made to showcase the projects I am workin on right now and the projects I have completed. The projects I work on usually follow a rule of being in a niche that I don't have a lot of experience in.",
+        "date":"Nov '24",
+        "genre":"Web Dev",
+        "image":"image/myPortfolio.png"
+    },
+    "page-2":{
+        "title":"Line follower Robot",
+        "discription":"This project is famous for introducing many people into electronics and I was no different.",
+        "date":"Dec '18",
+        "genre":"Electronics",
+        "image":""
+    },
+    "page-3":{
+        "title":"Ios Calculator App",
+        "discription":"An app that was ahead of its time(since iPads didn't have a calculator app). Coded in XCode.",
+        "date":"June '20",
+        "genre":"App Dev",
+        "image":""
+    },
+    "page-4":{
+        "title":"Pigeon Hunter 2000",
+        "discription":"Peak Lockdown activity, what can I say.",
+        "date":"Aug '20",
+        "genre":"Electronics",
+        "image":""
+    },
+    "page-5":{
+        "title":"2D platformer",
+        "discription":"The First Unity game I made. It was an introduction to Game Dev, which was the beggining of a great hobby.",
+        "date":"Dec '20",
+        "genre":"Game Dev",
+        "image":""
+    },
+    "page-6":{
+        "title":"Fluid Simulation",
+        "discription":"A program in Unity to simulate the motion of particles according to fluid dynamics.",
+        "date":"Aug '22",
+        "genre":"Simulation",
+        "image":""
+    },
+    "page-7":{
+        "title":"Tick Tick - Trello Api",
+        "discription":"A Python program to connect tasks in Tick Tick to a Trello Board",
+        "date":"Jan '23",
+        "genre":"API",
+        "image":""
+    },
+    "page-8":{
+        "title":"Lost in the Ether",
+        "discription":"A game in which you(an astronaut) crash land on a planet. You only have a rover which you can use to collect materials to repair you rocket ship to travel further in spacee in humanity's quest to find a habitable planet",
+        "date":"Sep '24",
+        "genre":"Game Dev",
+        "image":"image/lostInTheEther.png"
+    }
+}
