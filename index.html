@@ -24,6 +24,7 @@
 
     body, .main-body {
         font-family: 'Hubot Sans', Arial, sans-serif;
+        color: white;
     }
 
     .header-bar {
@@ -47,14 +48,15 @@
     .header-dropdown {
         display: flex;
         flex-direction: row;
-        justify-content: center;
-        padding-right: 6%;
+        justify-content: right;
+        padding-right: 2vw;
         z-index: 3;
     }
 
     .header-ProjectsDropDown {
-        padding-right: 80%;
+        padding-right: 5vw;
         cursor: pointer;
+        text-align: right;
     }
 
     .header-ContactMenu.active{
@@ -106,6 +108,7 @@
     .header-ContactMenu ul{
         list-style-type: none;
         padding-left: 0;
+        cursor: pointer;
     }
 
     .header-ContactMenu.active {
@@ -133,16 +136,20 @@
         flex-direction: row;
         justify-content: center;
         padding: 8% 10%;
-        background-color: grey;
         gap: 2%;
         height: 95vh;
         align-items: center;
+        background-image: url('image/bgimage.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
     }
 
     .main-body {
         display: flex;
         flex-direction: column;
         flex: 2;
+        transition: 0.3s ease;
     }
 
     .main-header {
@@ -150,10 +157,13 @@
     }
 
     .main-text {
+        margin-left: 2vw;
         font-size: 2vh;
+        white-space: pre-line;
     }
 
     .main-footer {
+        margin-left: 2vw;
         display: flex;
         gap: 10rem;
         font-size: 1.8vh;
@@ -165,6 +175,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .main-image img{
+        border-radius: 10%;
     }
 
     .main-image img {
@@ -185,6 +198,7 @@
 
     .footer-nav-prev, .footer-nav-next {
         cursor: pointer;
+        font-size: 1.2  rem;
     }
 
     .footer-nav-footer {
@@ -203,17 +217,17 @@
     }
     .footer-nav-footer-contacts a {
         color: white;
-        font-size: 1.2rem; /* Adjust the size of the icons */
+        font-size: 1.2rem; 
         text-decoration: none;
     }
 
     .footer-nav-footer-contacts {
         display: flex;
-        gap: 0.5rem; /* Adds spacing between icons */
+        gap: 0.5rem; 
         align-items: center;
     }
 
-    /* Responsive Design */
+    
     @media (max-width: 768px) {
         .main-div {
             flex-direction: column;
@@ -263,7 +277,7 @@
                 My Portfolio | Carlton Lobo
             </div>
             <nav class="header-dropdown">
-                <div class="header-ProjectsDropDown">
+                <div class="header-ProjectsDropDown" id="dual-button">
                     Projects
                 </div>
                 <div class="header-ContactDropDown" id="hamButton">
@@ -280,36 +294,30 @@
     <div class="header-ContactMenu" id="hamMenu">
         <ul>
             <li>&nbsp;</li>
-            <li>Home</li>
-            <li>My Projects</li>
-            <li>Contact Me</li>
+            <li id="home-button">Home</li>
+            <li id="projects-button">My Projects</li>
+            <li id="contactMe-button">Contact Me</li>
         </ul>
     </div>
     <div class = "main-div">
         <div class="main-body">
             <div class="main-header" id="main-header">
-                My Portfolio
+                About Me
             </div>
             <div class="main-text" id="main-text">
-                This website was made to showcase the projects I am workin on right now and the projects I have completed. The projects I work on usually follow a rule of being in a niche that I don't have a lot of experience in.
+                🖈 Mumbai, Maharashtra<br>I'm Carlton Lobo, I am a B Tech student in Chemical Engineering at IIT Guwahati, and a coding and electronics enthusiast.
             </div>
             <div class="main-footer">
-                <div class="main-footer-date" id="main-footer-date">
-                    Date: November '24
-                </div>
-                <div class="main-footer-genre" id="main-footer-genre">
-                    Genre: Web Dev
-                </div>
+                <div class="main-footer-date" id="main-footer-date"></div>
+                <div class="main-footer-genre" id="main-footer-genre"></div>
             </div>
         </div>
         <div class="main-image">
-            <img src = "image/myPortfolio.png" alt = "An Image Of the Website" height="20%">
+            <img src = "image/AboutPageImage.jpg" alt = "An image of the Developer" height="20" id="image">
         </div>
     </div>
     <footer class="footer-nav">
-        <div class="footer-nav-prev" id="prev-page">
-            Previous Page
-        </div>
+        <div class="footer-nav-prev" id="prev-page"></div>
         <div class="footer-nav-footer">
             <div class="footer-nav-footer-text">
                 This Website was made by Carlton Lobo.
@@ -321,9 +329,7 @@
                     <a href = "https://github.com/CarltonLobo" class="fa fa-github"></a>
             </div>
         </div>
-        <div class="footer-nav-next" id="next-page">
-            Next Page
-        </div>
+        <div class="footer-nav-next" id="next-page"></div>
     </footer>
     <script>
 const hamButton = document.getElementById("hamButton");
@@ -333,11 +339,13 @@ const title = document.getElementById("main-header");
 const desc = document.getElementById("main-text");
 const date = document.getElementById("main-footer-date");
 const genre = document.getElementById("main-footer-genre");
+const img = document.getElementById("image");
+const dualButton = document.getElementById("dual-button");
 
 const prevButton = document.getElementById("prev-page");
 const nextButton = document.getElementById("next-page");
 
-var projectNumber = 1;
+var projectNumber = 0;
 var json;
 
 fetch('content.json')  // Path to your JSON file (same directory here)
@@ -359,23 +367,69 @@ hamButton.addEventListener("click", () =>{
     hamMenu.classList.toggle("active");
 })
 
+dualButton.addEventListener("click", () =>{
+    if(projectNumber == 0){
+        projectNumber = 1;
+        prevButton.textContent = "Previous Page";
+        nextButton.textContent = "Next Page";
+        dualButton.textContent = "Home";
+    }
+    else{
+        projectNumber = 0;
+        prevButton.textContent = "";
+        nextButton.textContent = "";
+        dualButton.textContent = "Projects";
+    }
+    updateText();
+})
+document.getElementById("home-button").addEventListener("click", () =>{
+    projectNumber = 0;
+    updateText();
+    prevButton.textContent = "";
+    nextButton.textContent = "";
+    dualButton.textContent = "Projects";
+})
+document.getElementById("projects-button").addEventListener("click", () =>{
+    projectNumber = 1;
+    updateText();
+    prevButton.textContent = "Previous Page";
+    nextButton.textContent = "Next Page";
+    dualButton.textContent = "Home";
+})
+document.getElementById("contactMe-button").addEventListener("click",()=>{
+    projectNumber = -1;
+    prevButton.textContent = "";
+    nextButton.textContent = "";
+    dualButton.textContent = "Home";
+    updateText();
+})
+
 nextButton.addEventListener("click",() =>{
-    projectNumber+=1;
+    if (projectNumber<8){
+        projectNumber+=1;
+    }
     updateText()
 })
 prevButton.addEventListener("click", ()=>{
-    projectNumber-=1;
+    if (projectNumber>1){
+        projectNumber-=1;
+    }
     updateText();
 })
 function updateText()
 {
     title.textContent = json['page-'+projectNumber]["title"];
     desc.textContent = json['page-'+projectNumber]["discription"];
-    date.textContent = "Date: "+json['page-'+projectNumber]["date"];
-    genre.textContent = "Genre: "+json['page-'+projectNumber]["genre"];
+    date.textContent = json['page-'+projectNumber]["date"];
+    img.src = json['page-'+projectNumber]["image"];
+    img.alt = json['page-'+projectNumber]["alt"];
+    if (projectNumber>0){
+        genre.textContent = "Genre: "+json['page-'+projectNumber]["genre"];
+    }
+    else{
+        genre.textContent = " ";
+    }
 }
-
-
     </script>
 </body>
 </html>
