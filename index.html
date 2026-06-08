@@ -140,13 +140,13 @@
         top: 65%;
     }
     .header-ContactDropDown.active .span-container span:nth-child(1){
-        transform: translate(0%,1.28vh) rotate(45deg);
+        transform: translate(0%,1.1vh) rotate(45deg);
     }
     .header-ContactDropDown.active .span-container span:nth-child(2){
         opacity: 0;
     }
     .header-ContactDropDown.active .span-container span:nth-child(3){
-        transform: translate(0%,-1.28vh) rotate(-45deg);
+        transform: translate(0%,-1.1vh) rotate(-45deg);
     }
 
     .main-div {
@@ -154,7 +154,6 @@
         flex-direction: row;
         justify-content: center;
         padding: 8% 10%;
-        padding-top: 20vh;
         gap: 4%;
         height: 90vh;
         align-items: center;
@@ -329,25 +328,18 @@
             top: 5.5vh;
         }
 
-        .header-ContactDropDown.active .span-container span:nth-child(1){
-        transform: translate(0%,1.16vh) rotate(45deg);
-        }
-        .header-ContactDropDown.active .span-container span:nth-child(3){
-            transform: translate(0%,-1.16vh) rotate(-45deg);
-        }
-
         .header-ContactMenu li {
             font-size: 2.4vh;
             padding: 2vh 0;
         }
 
         .main-div {
-            flex-direction: column-reverse; /* Puts critical project images on top */
+            flex-direction: column-reverse; 
             justify-content: flex-start;
-            padding: 12vh 6% 14vh 6%; /* Leaves space clear of header and footer */
+            padding: 12vh 6% 14vh 6%; 
             gap: 3vh;
             height: 90vh;
-            overflow-y: auto; /* Allows smooth scrolling within the card if text wraps long */
+            overflow-y: auto; 
             -webkit-overflow-scrolling: touch;
         }
 
@@ -387,8 +379,9 @@
             padding-top: 1.5vh;
         }
 
+        /* Fixed structural split configuration for mobile navigation grid */
         .footer-nav {
-            grid-template-columns: 1fr; /* Stack footer tools on small screen real-estate */
+            grid-template-columns: 1fr 1fr; /* Splitting buttons exactly 50/50 */
             grid-template-rows: auto auto;
             height: auto;
             padding: 2vh 4%;
@@ -397,23 +390,39 @@
 
         .footer-nav-prev, .footer-nav-next {
             font-size: 2.2vh;
-            grid-row: 1; /* Keep pagination keys grouped on top line */
+            grid-row: 1; 
+            width: 100%;
         }
         
-        .footer-nav-prev { text-align: left; }
-        .footer-nav-next { text-align: right; }
+        .footer-nav-prev { 
+            text-align: left; 
+            grid-column: 1;
+        }
+        .footer-nav-next { 
+            text-align: right; 
+            grid-column: 2;
+        }
 
+        /* Center-aligned links wrapper setup for phone layouts */
         .footer-nav-footer {
             grid-row: 2;
-            flex-direction: column;
-            gap: 1vh;
+            grid-column: 1 / span 2; /* Stretch completely across the entire row width */
+            justify-content: center;
+            align-items: center;
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1vh;
+            padding-top: 1.5vh;
             width: 100%;
         }
 
+        /* Hides the structural portfolio attribution text completely on phone layouts */
         .footer-nav-footer-text {
-            font-size: 1.4vh;
+            display: none;
+        }
+
+        .footer-nav-footer-contacts {
+            justify-content: center;
+            width: 100%;
+            gap: 1.5rem;
         }
 
         #github-ux-indicator {
@@ -505,7 +514,8 @@
         var projectNumber = 0;
         var json;
 
-        fetch('content.json')  
+        // 1. FORCE JSON DOWNLOAD EVERY TIME USING A CACHE-BUSTING TIMESTAMP
+        fetch('content.json?v=' + new Date().getTime())  
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch JSON');
@@ -514,17 +524,19 @@
             })
             .then(data => {
                 json = data;
+                // Optionally preload the first project's image immediately on home page load
+                preloadNextImage(1);
             })
             .catch(error => {
                 console.error('Error:', error);
             });
 
-        hamButton.addEventListener("click", () =>{
+        hamButton.addEventListener("click", () => {
             hamButton.classList.toggle("active");
             hamMenu.classList.toggle("active");
-        })
+        });
 
-        dualButton.addEventListener("click", () =>{
+        dualButton.addEventListener("click", () => {
             if(projectNumber == 0){
                 projectNumber = 1;
                 prevButton.textContent = "Previous Page";
@@ -538,8 +550,9 @@
                 dualButton.textContent = "Projects";
             }
             updateText();
-        })
-        document.getElementById("home-button").addEventListener("click", () =>{
+        });
+
+        document.getElementById("home-button").addEventListener("click", () => {
             projectNumber = 0;
             updateText();
             prevButton.textContent = "";
@@ -547,8 +560,9 @@
             dualButton.textContent = "Projects";
             hamButton.classList.remove("active");
             hamMenu.classList.remove("active");
-        })
-        document.getElementById("projects-button").addEventListener("click", () =>{
+        });
+
+        document.getElementById("projects-button").addEventListener("click", () => {
             projectNumber = 1;
             updateText();
             prevButton.textContent = "Previous Page";
@@ -556,8 +570,9 @@
             dualButton.textContent = "Home";
             hamButton.classList.remove("active");
             hamMenu.classList.remove("active");
-        })
-        document.getElementById("contactMe-button").addEventListener("click",()=>{
+        });
+
+        document.getElementById("contactMe-button").addEventListener("click",() => {
             projectNumber = -1;
             prevButton.textContent = "";
             nextButton.textContent = "";
@@ -565,20 +580,32 @@
             updateText();
             hamButton.classList.remove("active");
             hamMenu.classList.remove("active");
-        })
+        });
 
-        nextButton.addEventListener("click",() =>{
+        nextButton.addEventListener("click",() => {
             if (projectNumber < maxProjectNumber){
                 projectNumber += 1;
             }
-            updateText()
-        })
-        prevButton.addEventListener("click", ()=>{
+            updateText();
+        });
+
+        prevButton.addEventListener("click", () => {
             if (projectNumber > 1){
                 projectNumber -= 1;
             }
             updateText();
-        })
+        });
+
+        // 2. HELPER FUNCTION TO SILENTLY PRELOAD IMAGES
+        function preloadNextImage(nextPageNum) {
+            if (json && json['page-' + nextPageNum]) {
+                const nextImgUrl = json['page-' + nextPageNum]["image"];
+                if (nextImgUrl) {
+                    const imgPreload = new Image();
+                    imgPreload.src = nextImgUrl; // Forces browser to cache the file early
+                }
+            }
+        }
 
         function updateText() {
             title.textContent = json['page-'+projectNumber]["title"];
@@ -595,6 +622,11 @@
 
             if (projectNumber > 0){
                 genre.textContent = "Genre: " + json['page-'+projectNumber]["genre"];
+                
+                // 3. LOOK AHEAD AND PRELOAD THE NEXT IMAGE ON THE CURRENT PAGE
+                if (projectNumber < maxProjectNumber) {
+                    preloadNextImage(projectNumber + 1);
+                }
             }
             else{
                 genre.textContent = " ";
