@@ -8,7 +8,6 @@
 </head>
 
 <style>
-
     * {
         margin: 0;
         padding: 0;
@@ -21,8 +20,14 @@
         font-weight: normal;
         font-style: normal;
     }
-
-    body, .main-body {
+    body {
+        font-family: 'Hubot Sans', Arial, sans-serif;
+        color: white;
+        background-color: black;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .main-body {
         font-family: 'Hubot Sans', Arial, sans-serif;
         color: white;
     }
@@ -36,8 +41,8 @@
         color: white;
         font-size: 2.8vh;
         justify-content: space-between;
-        padding: 1% 0%;
-        z-index: 1;
+        padding: 1.5% 0%;
+        z-index: 10;
         top: 0;
     }
 
@@ -50,19 +55,19 @@
         flex-direction: row;
         justify-content: right;
         padding-right: 2vw;
-        z-index: 3;
+        z-index: 12;
     }
 
     .header-ProjectsDropDown {
         padding-right: 5vw;
         cursor: pointer;
-        text-align: right;
+        text-align: center;
+        transition: transform 0.2s ease, opacity 0.2s ease;
     }
-
-    .header-ContactMenu.active{
-        right: 0;
+    .header-ProjectsDropDown:hover {
+        transform: scale(1.05);
+        color: #a0a0a0;
     }
-
 
     .header-ContactDropDown {
         position: relative;
@@ -76,6 +81,9 @@
         flex-direction: column;
         justify-content: space-around;
     }
+    .span-container:hover span {
+        background-color: #808080;
+    }
 
     .header-ContactDropDown span {
         display: block;
@@ -88,12 +96,11 @@
     }
 
     .header-ContactMenu {
-        background-color: black;
+        background-color: rgba(0, 0, 0, 0.95);
         color: white;
-        height: 15vh;
-        width: 10%;
-        border-radius: 3vh;
-        max-width: 10vw;
+        height: 22vh;
+        width: 15vw;
+        border-radius: 2vh;
         position: fixed;
         top: -100%;
         display: flex;
@@ -101,18 +108,29 @@
         align-items: center;
         text-align: center;
         justify-content: center;
-        padding: 2% 2%;
-        right: 0%;  
-        transition: top 0.3s ease;
+        padding: 2%;
+        right: 1%;  
+        transition: top 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        z-index: 9;
     }
     .header-ContactMenu ul{
         list-style-type: none;
         padding-left: 0;
         cursor: pointer;
+        width: 100%;
+    }
+
+    .header-ContactMenu li {
+        padding: 1.2vh 0;       
+        font-size: 1.9vh;       
+        transition: color 0.2s ease;
+    }
+    .header-ContactMenu li:hover {
+        color: #a0a0a0;      
     }
 
     .header-ContactMenu.active {
-        top: 5.5vh;
+        top: 7vh;
     }
         
     .header-ContactDropDown .span-container span:nth-child(1){
@@ -122,13 +140,13 @@
         top: 65%;
     }
     .header-ContactDropDown.active .span-container span:nth-child(1){
-        transform: translate(0%,1.3vh) rotate(45deg);
+        transform: translate(0%,1.28vh) rotate(45deg);
     }
     .header-ContactDropDown.active .span-container span:nth-child(2){
         opacity: 0;
     }
     .header-ContactDropDown.active .span-container span:nth-child(3){
-        transform: translate(0%,-1.3vh) rotate(-45deg);
+        transform: translate(0%,-1.28vh) rotate(-45deg);
     }
 
     .main-div {
@@ -136,38 +154,66 @@
         flex-direction: row;
         justify-content: center;
         padding: 8% 10%;
-        gap: 2%;
-        height: 95vh;
+        padding-top: 20vh;
+        gap: 4%;
+        height: 90vh;
         align-items: center;
         background-image: url('image/bgimage.jpg');
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
+        overflow: hidden; 
+    }
+
+    #github-ux-indicator {
+        position: fixed;
+        bottom: 12vh; 
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2vh;
+        color: #a0a0a0;
+        font-weight: bold;
+        z-index: 5;
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        text-align: center;
+    }
+
+    #github-ux-indicator i {
+        font-size: 2.6vh;
+        margin-right: 8px;
+        vertical-align: middle;
     }
 
     .main-body {
         display: flex;
         flex-direction: column;
-        flex: 2;
-        transition: 0.3s ease;
+        flex: 1.3;
     }
+    .main-body, .main-image {
+        transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+    }   
 
     .main-header {
-        font-size: 7vh;
+        font-size: 6.5vh;
+        font-weight: bold;
+        margin-bottom: 2vh;
     }
 
     .main-text {
-        margin-left: 2vw;
-        font-size: 2vh;
+        margin-left: 0.5vw;
+        font-size: 2.2vh;
+        line-height: 1.6;
         white-space: pre-line;
     }
 
     .main-footer {
-        margin-left: 2vw;
+        margin-left: 0.5vw;
         display: flex;
-        gap: 10rem;
+        gap: 3rem;
         font-size: 1.8vh;
-        margin-top: 10px;
+        margin-top: 2vh;
+        color: #cccccc;
     }
 
     .main-image {
@@ -175,30 +221,50 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        max-height: 60vh;
     }
     .main-image img{
-        border-radius: 10%;
-    }
-
-    .main-image img {
+        border-radius: 4vh;
         max-width: 100%;
         height: auto;
+        object-fit: contain;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
 
     .footer-nav {
         width: 100%;
+        height: 10vh;
         background-color: black;
         color: white;
-        display: flex;
-        justify-content: space-between;
-        padding: 1% 3%;
+        display: grid; 
+        grid-template-columns: 1.2fr 2fr 1.2fr; 
+        align-items: center; 
+        padding: 0% 4%;
         position: fixed;
         bottom: 0;
+        z-index: 10;
     }
 
-    .footer-nav-prev, .footer-nav-next {
+    .footer-nav-prev{
+        text-align: left; 
         cursor: pointer;
-        font-size: 1.2  rem;
+        font-size: 2.2vh;
+        font-weight: bold;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+        white-space: nowrap;
+    }
+    
+    .footer-nav-next {
+        text-align: right; 
+        cursor: pointer;
+        font-size: 2.2vh;
+        font-weight: bold;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+        white-space: nowrap;
+    }
+    .footer-nav-prev:hover, .footer-nav-next:hover {
+        transform: scale(1.03);
+        opacity: 0.7;
     }
 
     .footer-nav-footer {
@@ -206,32 +272,83 @@
         align-items: center;
         flex-direction: row;
         justify-content: center;
-        gap: 7vw;
-        flex: 1;
+        gap: 4vw;
         text-align: center;
     }
 
     .footer-nav-footer-text {
         display: flex;
         white-space: nowrap;
+        font-size: 1.6vh;
     }
     .footer-nav-footer-contacts a {
         color: white;
-        font-size: 1.2rem; 
+        font-size: 2.2vh; 
         text-decoration: none;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .footer-nav-footer-contacts a:hover {
+        transform: scale(1.2);
+        color: #a0a0a0; 
     }
 
     .footer-nav-footer-contacts {
         display: flex;
-        gap: 0.5rem; 
+        gap: 1rem; 
         align-items: center;
     }
 
-    
+    /* =======================================================
+       MOBILE OPTIMIZATION STYLESHEET
+       ======================================================= */
     @media (max-width: 768px) {
+        .header-bar {
+            padding: 3% 0%;
+            font-size: 2.2vh;
+        }
+
+        .header-logo {
+            padding-left: 5%;
+        }
+
+        .span-container {
+            width: 7vw;
+            height: 3.5vh;
+        }
+
+        .header-ContactMenu {
+            width: 100vw;
+            max-width: 100vw;
+            height: auto;
+            right: 0;
+            border-radius: 0 0 3vh 3vh;
+            padding: 4% 0%;
+        }
+
+        .header-ContactMenu.active {
+            top: 5.5vh;
+        }
+
+        .header-ContactDropDown.active .span-container span:nth-child(1){
+        transform: translate(0%,1.16vh) rotate(45deg);
+        }
+        .header-ContactDropDown.active .span-container span:nth-child(3){
+            transform: translate(0%,-1.16vh) rotate(-45deg);
+        }
+
+        .header-ContactMenu li {
+            font-size: 2.4vh;
+            padding: 2vh 0;
+        }
+
         .main-div {
-            flex-direction: column;
-            padding: 5% 5%;
+            flex-direction: column-reverse; /* Puts critical project images on top */
+            justify-content: flex-start;
+            padding: 12vh 6% 14vh 6%; /* Leaves space clear of header and footer */
+            gap: 3vh;
+            height: 90vh;
+            overflow-y: auto; /* Allows smooth scrolling within the card if text wraps long */
+            -webkit-overflow-scrolling: touch;
         }
 
         .main-body, .main-image {
@@ -239,40 +356,77 @@
             width: 100%;
         }
 
-        .header-bar {
-            flex-direction: column;
-            align-items: center;
+        .main-image {
+            max-height: 32vh;
+            margin-bottom: 1vh;
         }
 
-        .header-dropdown {
-            padding-right: 0;
-            padding-left: 0;
-            margin-top: 10px;
+        .main-image img {
+            max-height: 32vh;
+            border-radius: 2vh;
         }
-        .span-container {
-            width: 8vw; /* Larger size on small screens */
-            height: 8vw;
+
+        .main-header {
+            font-size: 4vh;
+            text-align: center;
+            margin-bottom: 1.5vh;
+        }
+
+        .main-text {
+            font-size: 2vh;
+            margin-left: 0;
+            text-align: justify;
+        }
+
+        .main-footer {
+            margin-left: 0;
+            justify-content: space-between;
+            gap: 1rem;
+            font-size: 1.7vh;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5vh;
+        }
+
+        .footer-nav {
+            grid-template-columns: 1fr; /* Stack footer tools on small screen real-estate */
+            grid-template-rows: auto auto;
+            height: auto;
+            padding: 2vh 4%;
+            gap: 1.5vh;
+        }
+
+        .footer-nav-prev, .footer-nav-next {
+            font-size: 2.2vh;
+            grid-row: 1; /* Keep pagination keys grouped on top line */
         }
         
-        .header-ContactMenu {
-            top: -100%; /* Start hidden off-screen for small screens as well */
-            height: 20vh; /* Adjust height for small screens */
+        .footer-nav-prev { text-align: left; }
+        .footer-nav-next { text-align: right; }
+
+        .footer-nav-footer {
+            grid-row: 2;
+            flex-direction: column;
+            gap: 1vh;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1vh;
+            width: 100%;
         }
 
-        .header-ContactMenu.active {
-            top: 10vh; /* Adjust final position for small screens */
+        .footer-nav-footer-text {
+            font-size: 1.4vh;
+        }
+
+        #github-ux-indicator {
+            bottom: 15vh;
+            font-size: 1.8vh;
+            width: 90%;
         }
     }
-
-    
-    
-
 </style>
-
 
 <body>
     <header>
-        <div class= "header-bar">
+        <div class="header-bar">
             <div class="header-logo">
                 My Portfolio | Carlton Lobo
             </div>
@@ -287,25 +441,23 @@
                         <span></span>
                     </div>
                 </div>
-                
             </nav>
         </div>
     </header>
     <div class="header-ContactMenu" id="hamMenu">
         <ul>
-            <li>&nbsp;</li>
             <li id="home-button">Home</li>
             <li id="projects-button">My Projects</li>
             <li id="contactMe-button">Contact Me</li>
         </ul>
     </div>
-    <div class = "main-div">
+    <div class="main-div">
         <div class="main-body">
             <div class="main-header" id="main-header">
                 About Me
             </div>
             <div class="main-text" id="main-text">
-                🖈 Mumbai, Maharashtra<br>I'm Carlton Lobo, I am a B Tech student in Chemical Engineering at IIT Guwahati, and a coding and electronics enthusiast.
+                🖈 Mumbai, Maharashtra<br>I'm Carlton Lobo, I am a B.Tech student in Electronics and Electrical Engineering at IIT Guwahati, and an electronics VLSI enthusiast.
             </div>
             <div class="main-footer">
                 <div class="main-footer-date" id="main-footer-date"></div>
@@ -313,8 +465,11 @@
             </div>
         </div>
         <div class="main-image">
-            <img src = "image/AboutPageImage.jpg" alt = "An image of the Developer" height="20" id="image">
+            <img src="image/AboutPageImage.jpg" alt="An image of the Developer" id="image">
         </div>
+    </div>
+    <div id="github-ux-indicator" style="display: none;">
+        <i class="fa fa-github"></i> Swipe up to view source on GitHub...
     </div>
     <footer class="footer-nav">
         <div class="footer-nav-prev" id="prev-page"></div>
@@ -324,36 +479,38 @@
             </div>
             <div class="footer-nav-footer-contacts">
                 My Links:&nbsp;
-                    <a href = "https://www.linkedin.com/in/carlton-lobo-a79537272/" class="fa fa-linkedin"></a>&nbsp;
-                    <a href = "https://www.instagram.com/carlton.lobo/" class="fa fa-instagram"></a>&nbsp;
-                    <a href = "https://github.com/CarltonLobo" class="fa fa-github"></a>
+                    <a href="https://www.linkedin.com/in/carlton-lobo-a79537272/" class="fa fa-linkedin"></a>&nbsp;
+                    <a href="https://www.instagram.com/carlton.lobo/" class="fa fa-instagram"></a>&nbsp;
+                    <a href="https://github.com/CarltonLobo" class="fa fa-github"></a>
             </div>
         </div>
         <div class="footer-nav-next" id="next-page"></div>
     </footer>
+
     <script>
-const hamButton = document.getElementById("hamButton");
-const hamMenu = document.getElementById("hamMenu");
+        const hamButton = document.getElementById("hamButton");
+        const hamMenu = document.getElementById("hamMenu");
 
-const title = document.getElementById("main-header");
-const desc = document.getElementById("main-text");
-const date = document.getElementById("main-footer-date");
-const genre = document.getElementById("main-footer-genre");
-const img = document.getElementById("image");
-const dualButton = document.getElementById("dual-button");
+        const title = document.getElementById("main-header");
+        const desc = document.getElementById("main-text");
+        const date = document.getElementById("main-footer-date");
+        const genre = document.getElementById("main-footer-genre");
+        const img = document.getElementById("image");
+        const dualButton = document.getElementById("dual-button");
 
-const prevButton = document.getElementById("prev-page");
-const nextButton = document.getElementById("next-page");
+        const prevButton = document.getElementById("prev-page");
+        const nextButton = document.getElementById("next-page");
 
-var projectNumber = 0;
-var json;
+        var maxProjectNumber = 10;
+        var projectNumber = 0;
+        var json;
 
-fetch('content.json')  // Path to your JSON file (same directory here)
+        fetch('content.json')  
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch JSON');
                 }
-                return response.json();  // Parse the JSON
+                return response.json();  
             })
             .then(data => {
                 json = data;
@@ -362,74 +519,202 @@ fetch('content.json')  // Path to your JSON file (same directory here)
                 console.error('Error:', error);
             });
 
-hamButton.addEventListener("click", () =>{
-    hamButton.classList.toggle("active");
-    hamMenu.classList.toggle("active");
-})
+        hamButton.addEventListener("click", () =>{
+            hamButton.classList.toggle("active");
+            hamMenu.classList.toggle("active");
+        })
 
-dualButton.addEventListener("click", () =>{
-    if(projectNumber == 0){
-        projectNumber = 1;
-        prevButton.textContent = "Previous Page";
-        nextButton.textContent = "Next Page";
-        dualButton.textContent = "Home";
-    }
-    else{
-        projectNumber = 0;
-        prevButton.textContent = "";
-        nextButton.textContent = "";
-        dualButton.textContent = "Projects";
-    }
-    updateText();
-})
-document.getElementById("home-button").addEventListener("click", () =>{
-    projectNumber = 0;
-    updateText();
-    prevButton.textContent = "";
-    nextButton.textContent = "";
-    dualButton.textContent = "Projects";
-})
-document.getElementById("projects-button").addEventListener("click", () =>{
-    projectNumber = 1;
-    updateText();
-    prevButton.textContent = "Previous Page";
-    nextButton.textContent = "Next Page";
-    dualButton.textContent = "Home";
-})
-document.getElementById("contactMe-button").addEventListener("click",()=>{
-    projectNumber = -1;
-    prevButton.textContent = "";
-    nextButton.textContent = "";
-    dualButton.textContent = "Home";
-    updateText();
-})
+        dualButton.addEventListener("click", () =>{
+            if(projectNumber == 0){
+                projectNumber = 1;
+                prevButton.textContent = "Previous Page";
+                nextButton.textContent = "Next Page";
+                dualButton.textContent = "Home";
+            }
+            else{
+                projectNumber = 0;
+                prevButton.textContent = "";
+                nextButton.textContent = "";
+                dualButton.textContent = "Projects";
+            }
+            updateText();
+        })
+        document.getElementById("home-button").addEventListener("click", () =>{
+            projectNumber = 0;
+            updateText();
+            prevButton.textContent = "";
+            nextButton.textContent = "";
+            dualButton.textContent = "Projects";
+            hamButton.classList.remove("active");
+            hamMenu.classList.remove("active");
+        })
+        document.getElementById("projects-button").addEventListener("click", () =>{
+            projectNumber = 1;
+            updateText();
+            prevButton.textContent = "Previous Page";
+            nextButton.textContent = "Next Page";
+            dualButton.textContent = "Home";
+            hamButton.classList.remove("active");
+            hamMenu.classList.remove("active");
+        })
+        document.getElementById("contactMe-button").addEventListener("click",()=>{
+            projectNumber = -1;
+            prevButton.textContent = "";
+            nextButton.textContent = "";
+            dualButton.textContent = "Home";
+            updateText();
+            hamButton.classList.remove("active");
+            hamMenu.classList.remove("active");
+        })
 
-nextButton.addEventListener("click",() =>{
-    if (projectNumber<8){
-        projectNumber+=1;
-    }
-    updateText()
-})
-prevButton.addEventListener("click", ()=>{
-    if (projectNumber>1){
-        projectNumber-=1;
-    }
-    updateText();
-})
-function updateText()
-{
-    title.textContent = json['page-'+projectNumber]["title"];
-    desc.textContent = json['page-'+projectNumber]["discription"];
-    date.textContent = json['page-'+projectNumber]["date"];
-    img.src = json['page-'+projectNumber]["image"];
-    img.alt = json['page-'+projectNumber]["alt"];
-    if (projectNumber>0){
-        genre.textContent = "Genre: "+json['page-'+projectNumber]["genre"];
-    }
-    else{
-        genre.textContent = " ";
-    }
-}
+        nextButton.addEventListener("click",() =>{
+            if (projectNumber < maxProjectNumber){
+                projectNumber += 1;
+            }
+            updateText()
+        })
+        prevButton.addEventListener("click", ()=>{
+            if (projectNumber > 1){
+                projectNumber -= 1;
+            }
+            updateText();
+        })
+
+        function updateText() {
+            title.textContent = json['page-'+projectNumber]["title"];
+            desc.textContent = json['page-'+projectNumber]["description"];
+            date.textContent = json['page-'+projectNumber]["date"];
+            img.src = json['page-'+projectNumber]["image"];
+            img.alt = json['page-'+projectNumber]["alt"];
+            
+            if(mainBody && mainImage) {
+                mainBody.style.transform = "translateY(0)";
+                mainImage.style.transform = "translateY(0)";
+            }
+            uxIndicator.style.display = "none";
+
+            if (projectNumber > 0){
+                genre.textContent = "Genre: " + json['page-'+projectNumber]["genre"];
+            }
+            else{
+                genre.textContent = " ";
+            }
+        }
+
+        // GitHub UX Indicator Logic
+        const mainContainer = document.querySelector(".main-div"); 
+        const mainBody = document.querySelector(".main-body");
+        const mainImage = document.querySelector(".main-image");
+        const uxIndicator = document.getElementById("github-ux-indicator");
+
+        let touchStartY = 0;
+        let touchEndY = 0;
+        let isAnimating = false;
+
+        let accumulatedDeltaY = 0;
+        let wheelTimeout = null;
+
+        const swipeThreshold = 550;   
+        const wheelThreshold = 450;   
+
+        function redirectToGitHub() {
+            if (projectNumber > 0 && json['page-' + projectNumber]["github"]) {
+                window.open(json['page-' + projectNumber]["github"], '_blank');
+            }
+        }
+
+        function hasGithubLink() {
+            return projectNumber > 0 && json['page-' + projectNumber] && json['page-' + projectNumber]["github"];
+        }
+
+        function shiftContent(value) {
+            if (mainBody && mainImage) {
+                mainBody.style.transform = value;
+                mainImage.style.transform = value;
+            }
+        }
+
+        // 1. DESKTOP MOUSE WHEEL / TRACKPAD
+        mainContainer.addEventListener("wheel", (event) => {
+            if (!hasGithubLink() || isAnimating) return;
+
+            clearTimeout(wheelTimeout);
+
+            if (event.deltaY > 0) {
+                accumulatedDeltaY += event.deltaY;
+            } else {
+                accumulatedDeltaY = 0;
+                shiftContent("translateY(0)");
+                uxIndicator.style.display = "none";
+                return;
+            }
+
+            if (accumulatedDeltaY > 30) {
+                const visualShift = Math.min(accumulatedDeltaY / 10, 45); 
+                shiftContent(`translateY(-${visualShift}px)`);
+                uxIndicator.style.display = "block";
+                uxIndicator.style.transform = "translateX(-50%) translateY(-1vh)";
+            }
+
+            if (accumulatedDeltaY > wheelThreshold) {
+                isAnimating = true;
+                redirectToGitHub();
+                
+                setTimeout(() => {
+                    shiftContent("translateY(0)");
+                    uxIndicator.style.display = "none";
+                    accumulatedDeltaY = 0;
+                    isAnimating = false;
+                }, 800);
+            }
+
+            wheelTimeout = setTimeout(() => {
+                if (!isAnimating) {
+                    shiftContent("translateY(0)");
+                    uxIndicator.style.display = "none";
+                    accumulatedDeltaY = 0;
+                }
+            }, 150);
+        });
+
+        mainContainer.addEventListener("mouseleave", () => {
+            if (!isAnimating) {
+                shiftContent("translateY(0)");
+                uxIndicator.style.display = "none";
+                accumulatedDeltaY = 0;
+            }
+        });
+
+        // 2. MOBILE TOUCH SCREEN TRACKING
+        mainContainer.addEventListener("touchstart", (event) => {
+            if (!hasGithubLink()) return;
+            touchStartY = event.touches[0].clientY;
+        });
+
+        mainContainer.addEventListener("touchmove", (event) => {
+            if (!hasGithubLink()) return;
+            const currentY = event.touches[0].clientY;
+            const pullDistance = touchStartY - currentY; 
+
+            if (pullDistance > 10) {
+                const visualShift = Math.min(pullDistance / 5, 50); 
+                shiftContent(`translateY(-${visualShift}px)`);
+                uxIndicator.style.display = "block";
+            }
+        });
+
+        mainContainer.addEventListener("touchend", (event) => {
+            if (!hasGithubLink()) return;
+            touchEndY = event.changedTouches[0].clientY;
+            const totalPull = touchStartY - touchEndY;
+
+            if (totalPull > swipeThreshold) {
+                redirectToGitHub();
+            }
+            
+            shiftContent("translateY(0)");
+            uxIndicator.style.display = "none";
+        });
     </script>
 </body>
 </html>

@@ -1,90 +1,119 @@
 {
     "page-":{
         "title":"",
-        "discription":"",
+        "description":"",
         "date":"",
         "genre":"",
         "image":"",
-        "alt":""
+        "alt":"",
+        "github":""
     },
     "page--1":{
         "title":"Contact Me",
-        "discription":"e-Mail: carlton05lobo@gmail.com \r\n Phone No.:9004639772",
+        "description":"e-Mail: carlton.lobo@outlook.com \r\n Phone No.: +91 9004639772",
         "date":"",
         "genre":"",
         "image":"",
-        "alt":""
+        "alt":"",
+        "github":""
     },
     "page-0":{
         "title":"About Me",
-        "discription":"🖈 Mumbai, Maharashtra\r\nI'm Carlton Lobo, I am a B Tech student in Chemical Engineering at IIT Guwahati, and a coding and electronics enthusiast.",
+        "description":"🖈 Mumbai, Maharashtra\r\nI'm Carlton Lobo, I am a B.Tech student in Electronics and Electrical Engineering at IIT Guwahati, and a electronics VLSI enthusiast.",
         "date":"",
         "genre":"",
         "image":"image/AboutPageImage.jpg",
-        "alt":"Image of the Developer"
+        "alt":"Image of the Developer",
+        "github":""
     },
     "page-1":{
-        "title":"Line follower Robot",
-        "discription":"This project is famous for introducing many people into electronics and I was no different.",
-        "date":"Date: Dec '18",
-        "genre":"Electronics",
-        "image":"",
-        "alt":"Image of a Line Following Robot"
+        "title":"Two Stage OTA",
+        "description":"Designed a 180 nm Two Stage Miller Compensated OTA with NMOS input Differential Pair, with a Current Mirror Load.\nSecond stage was a PMOS common source amplifier. An Ideal Current Source was used as the biasing circuit of Current in Tail / 10 to reduce power consumption.\nThe design had an Open Loop Gain of 69 dB, a Unity Gain Bandwidth of 27 MHz and a Phase Margin of 87 degrees, Slew Rate of 8.6 V/μs, CMRR of 87 dB while consuming 500μW.",
+        "date":"Date: Mar '26",
+        "genre":"Analog Electronics",
+        "image":"image/OTA.png",
+        "alt":"Image of the OTA design in LTspice",
+        "github": "https://github.com/CarltonLobo/2-Stage-OTA-Design"
     },
     "page-2":{
-        "title":"Ios Calculator App",
-        "discription":"An app that was ahead of its time(since iPads didn't have a calculator app). Coded in XCode.",
-        "date":"Date: June '20",
-        "genre":"App Dev",
-        "image":"",
-        "alt":"Image of a calculator app"
+        "title":"Digital Decimation Filters",
+        "description":"Designed various filters in MATLAB and implemented them in Verilog.\nFilters like CIC, Cascaded Half Band, FIR and IIR were designed and implemented. The filters were designed to be used in a decimation process for a Sigma Delta ADC.\nThe filters were designed to have a cutoff frequency of Pi/2048, with an output of 20-Bits at 20 kSPS.",
+        "date":"Date: Dec '25",
+        "genre":"Digital Signal Processing",
+        "image":"image/DDF.png",
+        "alt":"Image of the filters designed in MATLAB and implemented in Verilog",
+        "github": "https://github.com/CarltonLobo/DigitalFilters"
     },
     "page-3":{
-        "title":"Pigeon Hunter 2000",
-        "discription":"Peak Lockdown activity, what can I say.",
-        "date":"Date: Aug '20",
-        "genre":"Electronics",
-        "image":"",
-        "alt":"Image of a Pigeon Hunter Device"
+        "title":"RISC-V pipelined processor",
+        "description":"Designed a 5 stage pipelined RISC-V processor in Verilog. The processor was designed to support the RV32I instruction set and had a clock frequency of 100 MHz and was verified with various testbenches.",
+        "date":"Date: Dec '25",
+        "genre":"Computer Architecture",
+        "image":"image/RISC-V.png",
+        "alt":"Image of the RISC-V processor",
+        "github": "https://github.com/CarltonLobo/RISCV-Pipelined-Processor"
     },
     "page-4":{
-        "title":"2D platformer",
-        "discription":"The First Unity game I made. It was an introduction to Game Dev, which was the beggining of a great hobby.",
-        "date":"Date: Dec '20",
-        "genre":"Game Dev",
-        "image":"",
-        "alt":"Image of a Platformer Game"
+        "title":"Retro Game Console",
+        "description":"Implemented Retro games like Snake and Pong on Verilog and then implemented them on an FPGA. The games were implemented using a VGA display and a FPGA buttons as input. The games were implemented using a state machine and a pixel generator to generate the graphics on the VGA display.",
+        "date":"Date: Sept '25",
+        "genre":"FPGA as a Gaming Console",
+        "image":"image/snk.png",
+        "alt":"Image of a Snake Game implemented on an FPGA",
+        "github": "https://github.com/CarltonLobo/HDL-Snake-Game"
     },
     "page-5":{
-        "title":"Fluid Simulation",
-        "discription":"A program in Unity to simulate the motion of particles according to fluid dynamics.",
-        "date":"Date: Aug '22",
-        "genre":"Simulation",
-        "image":"",
-        "alt":"Image of a Fluid Simulation"
+        "title":"Hardware Image Processing",
+        "description":"Implemented various image processing algorithms like Edge Detection, Blurring and Sharpening on an FPGA. The algorithms used a pipelined line buffer system to store the pixel data and perform a 3x3 convolution on the pixel data to generate the output image.\nThe algorithms were performed on a live video feed from an OV7670 camera module and the output was displayed on a VGA display.",
+        "date":"Date: Mar '26",
+        "genre":"Digital Signal Processing",
+        "image":"image/EdgeDetection.png",
+        "alt":"Image of Edge Detection algorithm implemented on an FPGA",
+        "github": "https://github.com/CarltonLobo/Digital-Lenna"
     },
     "page-6":{
-        "title":"Tick Tick - Trello Api",
-        "discription":"A Python program to connect tasks in Tick Tick to a Trello Board",
-        "date":"Date: Jan '23",
-        "genre":"API",
-        "image":"",
-        "alt":"Image of the API working"
+        "title":"Precision Oscillator",
+        "description":"Designed a VCO using an Integrator, a Schmitt Trigger and a BJT current switcher.\nA F-2-V Sensor was created using a differentiator and a Peak Detector to measure the frequency of the VCO output and then passed on an Active PID block. The PID ensured accrate frequencies even with changes in the magnitude of generated Triangular wave.\n The design was implemented on a perforated board and the results were verified with an oscilloscope.",
+        "date":"Date: Mar '26",
+        "genre":"Analog Electronics",
+        "image":"image/VCOoutput.jpeg",
+        "alt":"Image of the output of the Precision Oscillator",
+        "github": "https://github.com/CarltonLobo/Precision-Oscillator---Analog-domain"
     },
     "page-7":{
-        "title":"Lost in the Ether",
-        "discription":"A game in which you(an astronaut) crash land on a planet. You only have a rover which you can use to collect materials to repair you rocket ship to travel further in spacee in humanity's quest to find a habitable planet",
-        "date":"Date: Sep '24",
-        "genre":"Game Dev",
-        "image":"image/lostInTheEther.png",
-        "alt":"Image of the game"
+        "title":"ALFR and Manipulator Robots",
+        "description":"A Line Follower Bot implemented using PID Control and a Manipulator Bot with 3 DOF was created from scratch using 3D printed parts.\nThe bots were created for the competition LAM Research Challenge 2025 and were designed to perform various tasks like picking and placing objects, following a line and avoiding obstacles. The bots were controlled using an Arduino and the code was written in C++.",
+        "date":"Date: Nov '25",
+        "genre":"Robotics & Control Systems",
+        "image":"image/LAM.jpg",
+        "alt":"Image taken during the LAM Research Challenge 2025 of the ALFB and Manipulator Robots",
+        "github": "https://github.com/CarltonLobo/LRC_Logical_Hardware_League"
     },
     "page-8":{
+        "title":"Warehouse Management System",
+        "description":"Uses ROS 2 to manage multiple robots to create a SLAM map of a warehouse and then use the map to navigate the robots to perform various tasks like navigating to specific locations. The system was designed to be scalable and can be used to manage a large number of robots in a warehouse environment.",
+        "date":"Date: Nov '24",
+        "genre":"Robotics",
+        "image":"image/WHS.jpeg",
+        "alt":"Image of the SLAM map generated by the Warehouse Management System",
+        "github": "https://github.com/CarltonLobo/interIITBootcamp"
+    },
+    "page-9":{
         "title":"My Portfolio",
-        "discription":"This website was made to showcase the projects I am workin on right now and the projects I have completed. The projects I work on usually follow a rule of being in a niche that I don't have a lot of experience in.",
+        "description":"This website was made to showcase the projects I am workin on right now and the projects I have completed. The projects I work on usually follow a rule of being in a niche that I don't have a lot of experience in.",
         "date":"Date: Nov '24",
         "genre":"Web Dev",
         "image":"image/myPortfolio.png",
-        "alt":"Image of this website"
+        "alt":"Image of this website during development",
+        "github": "https://github.com/CarltonLobo/CarltonLobo.github.io"
+    },
+    "page-10":{
+        "title":"Lost in the Ether",
+        "description":"A game in which you(an astronaut) crash land on a planet. You only have a rover which you can use to collect materials to repair you rocket ship to travel further in space in humanity's quest to find a habitable planet",
+        "date":"Date: Sep '24",
+        "genre":"Game Dev",
+        "image":"image/lostInTheEther.png",
+        "alt":"Image of the game",
+        "github": "https://github.com/CarltonLobo/LostInTheEther"
     }
 }
